@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 270 100% 95%;
+    --foreground: 270 15% 10%;
+
+    --card: 270 40% 98%;
+    --card-foreground: 270 15% 10%;
+
+    --popover: 270 40% 98%;
+    --popover-foreground: 270 15% 10%;
+
+    --primary: 270 95% 70%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 25 95% 70%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 270 20% 90%;
+    --muted-foreground: 270 10% 40%;
+
+    --accent: 45 95% 65%;
+    --accent-foreground: 270 15% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 270 20% 85%;
+    --input: 270 20% 85%;
+    --ring: 270 95% 70%;
+
+    --radius: 1rem;
+
+    /* Sol e Lua Gradientes */
+    --gradient-sun-moon: linear-gradient(135deg, hsl(270 80% 60%) 0%, hsl(25 85% 45%) 100%);
+    
+    /* Redes Sociais */
+    --whatsapp: 140 100% 45%;
+    --instagram-start: 320 100% 60%;
+    --instagram-end: 45 100% 60%;
+    --linkedin: 210 100% 40%;
+    --telegram: 195 100% 55%;
+    --youtube: 0 100% 50%;
+    --tiktok: 0 0% 10%;
+    
+    /* Animações */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-glow: 0 20px 40px -10px;
+    --shadow-elegant: 0 10px 30px -10px;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background: var(--gradient-sun-moon);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .sun-moon-bg {
+    background: var(--gradient-sun-moon);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .sun-moon-bg::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: 
+      radial-gradient(circle at 0% 0%, hsl(270 80% 60% / 0.3) 0%, transparent 30%),
+      radial-gradient(circle at 100% 0%, hsl(45 100% 70% / 0.2) 0%, transparent 30%),
+      radial-gradient(circle at 0% 100%, hsl(25 90% 65% / 0.2) 0%, transparent 30%),
+      radial-gradient(circle at 100% 100%, hsl(270 80% 60% / 0.3) 0%, transparent 30%);
+    animation: heat-wave 4s ease-in-out infinite;
+    z-index: 1;
+    filter: blur(1px);
+  }
+  
+  .sun-moon-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(ellipse 200px 100px at 10% 10%, hsl(270 80% 60% / 0.1) 0%, transparent 70%),
+      radial-gradient(ellipse 150px 80px at 90% 10%, hsl(45 100% 70% / 0.1) 0%, transparent 70%),
+      radial-gradient(ellipse 180px 90px at 10% 90%, hsl(25 90% 65% / 0.1) 0%, transparent 70%),
+      radial-gradient(ellipse 160px 85px at 90% 90%, hsl(270 80% 60% / 0.1) 0%, transparent 70%);
+    animation: heat-distortion 6s ease-in-out infinite reverse;
+    z-index: 1;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(270 80% 80%) 0%, hsl(45 100% 70%) 50%, hsl(25 90% 65%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px hsl(270 80% 70% / 0.5));
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+  
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .floating-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  
+  .photo-container {
+    @apply relative rounded-full border-4 border-white/30 backdrop-blur-sm;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-glow) hsl(var(--primary) / 0.3);
+    transition: var(--transition-smooth);
+  }
+  
+  .photo-container:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-glow) hsl(var(--primary) / 0.5);
+  }
+  
+  .social-btn {
+    @apply relative rounded-2xl p-4 transition-all duration-300 transform hover:scale-110 active:scale-95;
+    @apply backdrop-blur-sm border border-white/20;
+    box-shadow: var(--shadow-elegant) rgba(0, 0, 0, 0.1);
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .social-btn:hover {
+    box-shadow: var(--shadow-glow) currentColor;
+  }
+  
+  .whatsapp-btn {
+    background: linear-gradient(135deg, hsl(var(--whatsapp)) 0%, hsl(var(--whatsapp)) 100%);
+    color: white;
+  }
+  
+  .instagram-btn {
+    background: linear-gradient(135deg, hsl(var(--instagram-start)) 0%, hsl(var(--instagram-end)) 100%);
+    color: white;
+  }
+  
+  .linkedin-btn {
+    background: linear-gradient(135deg, hsl(var(--linkedin)) 0%, hsl(var(--linkedin)) 100%);
+    color: white;
+  }
+  
+  .telegram-btn {
+    background: linear-gradient(135deg, hsl(var(--telegram)) 0%, hsl(var(--telegram)) 100%);
+    color: white;
+  }
+  
+  .youtube-btn {
+    background: linear-gradient(135deg, hsl(var(--youtube)) 0%, hsl(var(--youtube)) 100%);
+    color: white;
+  }
+  
+  .tiktok-btn {
+    background: linear-gradient(135deg, hsl(var(--tiktok)) 0%, hsl(320 100% 60%) 100%);
+    color: white;
+  }
+}
+
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: var(--shadow-glow) hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: var(--shadow-glow) hsl(var(--primary) / 0.6);
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-50%) rotate(180deg);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px hsl(270 80% 70% / 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px hsl(270 80% 70% / 0.8)) drop-shadow(0 0 30px hsl(45 100% 70% / 0.4));
+  }
+}
+
+@keyframes heat-wave {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: blur(1px) hue-rotate(0deg);
+  }
+  25% {
+    transform: scale(1.02) rotate(1deg);
+    filter: blur(1.5px) hue-rotate(5deg);
+  }
+  50% {
+    transform: scale(0.98) rotate(-0.5deg);
+    filter: blur(2px) hue-rotate(10deg);
+  }
+  75% {
+    transform: scale(1.01) rotate(0.8deg);
+    filter: blur(1.2px) hue-rotate(-5deg);
+  }
+}
+
+@keyframes heat-distortion {
+  0%, 100% {
+    transform: scale(1) skew(0deg);
+    opacity: 0.6;
+  }
+  33% {
+    transform: scale(1.05) skew(0.5deg);
+    opacity: 0.8;
+  }
+  66% {
+    transform: scale(0.95) skew(-0.3deg);
+    opacity: 0.4;
+  }
+}
