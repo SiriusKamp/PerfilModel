@@ -1,70 +1,60 @@
-import { SocialButton } from '@/components/SocialButton';
-import { PhotoPlaceholder } from '@/components/PhotoPlaceholder';
-import { MessageCircle, Instagram, Linkedin, Send, Youtube, Music } from 'lucide-react';
+import { ProfileSection } from "@/components/ProfileSection";
+import { SocialButton } from "@/components/SocialButton";
+import { MessageCircle, Instagram, Linkedin, Send, Youtube, Music } from "lucide-react";
 
 const Index = () => {
   const socialLinks = [
     {
       icon: MessageCircle,
-      label: "WhatsApp Business",
-      href: "https://wa.me/",
-      className: "whatsapp-btn"
+      name: "WhatsApp Business",
+      href: "https://wa.me/5511999999999",
+      variant: "whatsapp" as const
     },
     {
       icon: Instagram,
-      label: "Instagram",
-      href: "https://instagram.com/",
-      className: "instagram-btn"
+      name: "Instagram",
+      href: "https://instagram.com/seuusuario",
+      variant: "instagram" as const
     },
     {
       icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/",
-      className: "linkedin-btn"
+      name: "LinkedIn",
+      href: "https://linkedin.com/in/seuusuario",
+      variant: "linkedin" as const
     },
     {
       icon: Send,
-      label: "Telegram",
-      href: "https://t.me/",
-      className: "telegram-btn"
+      name: "Telegram",
+      href: "https://t.me/seuusuario",
+      variant: "telegram" as const
     },
     {
       icon: Youtube,
-      label: "YouTube",
-      href: "https://youtube.com/@",
-      className: "youtube-btn"
+      name: "YouTube",
+      href: "https://youtube.com/@seucanal",
+      variant: "youtube" as const
     },
     {
       icon: Music,
-      label: "TikTok",
-      href: "https://tiktok.com/@",
-      className: "tiktok-btn"
+      name: "TikTok",
+      href: "https://tiktok.com/@seuusuario",
+      variant: "tiktok" as const
     }
   ];
 
   return (
-    <div className="min-h-screen sun-moon-bg flex flex-col items-center justify-center p-6 relative overflow-hidden">      
-      <div className="max-w-md w-full space-y-8 relative z-10">
-        {/* Área da foto */}
-        <div className="text-center floating-element">
-          <PhotoPlaceholder />
-          <h1 className="mt-6 text-3xl font-bold text-gradient drop-shadow-lg">
-            STACY FELIX TERRA
-          </h1>
-          <p className="mt-2 text-white/90 text-lg floating-delayed">
-            Conecte-se comigo nas redes sociais abaixo!
-          </p>
-        </div>
-
-        {/* Grid de redes sociais */}
-        <div className="grid grid-cols-2 gap-4 mt-8">
-          {socialLinks.map((social, index) => (
+    <div className="min-h-screen bg-gradient-main flex items-center justify-center p-6">
+      <div className="w-full max-w-md">
+        <ProfileSection />
+        
+        <div className="grid grid-cols-2 gap-4 animate-float">
+          {socialLinks.map((link, index) => (
             <SocialButton
-              key={social.label}
-              icon={social.icon}
-              label={social.label}
-              href={social.href}
-              className={social.className}
+              key={index}
+              icon={link.icon}
+              name={link.name}
+              href={link.href}
+              variant={link.variant}
             />
           ))}
         </div>

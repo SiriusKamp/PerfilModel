@@ -8,52 +8,56 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 270 100% 95%;
-    --foreground: 270 15% 10%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
-    --card: 270 40% 98%;
-    --card-foreground: 270 15% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 270 40% 98%;
-    --popover-foreground: 270 15% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 270 95% 70%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 25 95% 70%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 270 20% 90%;
-    --muted-foreground: 270 10% 40%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 45 95% 65%;
-    --accent-foreground: 270 15% 10%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 270 20% 85%;
-    --input: 270 20% 85%;
-    --ring: 270 95% 70%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
 
-    --radius: 1rem;
+    --radius: 0.5rem;
 
-    /* Sol e Lua Gradientes */
-    --gradient-sun-moon: linear-gradient(135deg, hsl(270 80% 60%) 0%, hsl(25 85% 45%) 100%);
+    /* Social Media Links Design System */
+    --gradient-main: linear-gradient(135deg, hsl(259, 50%, 25%) 0%, hsl(278, 40%, 35%) 25%, hsl(295, 50%, 45%) 50%, hsl(25, 85%, 55%) 75%, hsl(35, 90%, 65%) 100%);
+    --gradient-profile-ring: linear-gradient(135deg, hsl(280, 40%, 70%) 0%, hsl(320, 45%, 75%) 100%);
     
-    /* Redes Sociais */
-    --whatsapp: 140 100% 45%;
-    --instagram-start: 320 100% 60%;
-    --instagram-end: 45 100% 60%;
-    --linkedin: 210 100% 40%;
-    --telegram: 195 100% 55%;
+    --profile-background: 290 50% 75%;
+    --profile-text: 0 0% 100%;
+    --profile-secondary: 290 30% 85%;
+    
+    --name-text: 45 100% 75%;
+    --subtitle-text: 0 0% 100%;
+    
+    /* Social Media Colors */
+    --whatsapp: 142 76% 36%;
+    --instagram-start: 320 70% 60%;
+    --instagram-end: 30 100% 60%;
+    --linkedin: 201 100% 35%;
+    --telegram: 199 100% 50%;
     --youtube: 0 100% 50%;
-    --tiktok: 0 0% 10%;
-    
-    /* Animações */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow-glow: 0 20px 40px -10px;
-    --shadow-elegant: 0 10px 30px -10px;
+    --tiktok-start: 300 100% 25%;
+    --tiktok-end: 320 100% 45%;
 
     --sidebar-background: 0 0% 98%;
 
@@ -108,6 +112,10 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dark mode adjustments */
+    --gradient-main: linear-gradient(135deg, hsl(259, 50%, 25%) 0%, hsl(278, 40%, 35%) 25%, hsl(295, 50%, 45%) 50%, hsl(25, 85%, 55%) 75%, hsl(35, 90%, 65%) 100%);
+    --gradient-profile-ring: linear-gradient(135deg, hsl(280, 40%, 70%) 0%, hsl(320, 45%, 75%) 100%);
   }
 }
 
@@ -117,190 +125,54 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground overflow-x-hidden;
-    background: var(--gradient-sun-moon);
-    min-height: 100vh;
+    @apply bg-background text-foreground;
   }
-}
 
-@layer components {
-  .sun-moon-bg {
-    background: var(--gradient-sun-moon);
-    position: relative;
-    overflow: hidden;
+  /* Floating animations - mais suaves */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
   }
-  
-  .sun-moon-bg::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: 
-      radial-gradient(circle at 0% 0%, hsl(270 80% 60% / 0.3) 0%, transparent 30%),
-      radial-gradient(circle at 100% 0%, hsl(45 100% 70% / 0.2) 0%, transparent 30%),
-      radial-gradient(circle at 0% 100%, hsl(25 90% 65% / 0.2) 0%, transparent 30%),
-      radial-gradient(circle at 100% 100%, hsl(270 80% 60% / 0.3) 0%, transparent 30%);
-    animation: heat-wave 4s ease-in-out infinite;
-    z-index: 1;
-    filter: blur(1px);
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2), 0 0 40px rgba(255, 255, 255, 0.1);
+    }
   }
-  
-  .sun-moon-bg::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      radial-gradient(ellipse 200px 100px at 10% 10%, hsl(270 80% 60% / 0.1) 0%, transparent 70%),
-      radial-gradient(ellipse 150px 80px at 90% 10%, hsl(45 100% 70% / 0.1) 0%, transparent 70%),
-      radial-gradient(ellipse 180px 90px at 10% 90%, hsl(25 90% 65% / 0.1) 0%, transparent 70%),
-      radial-gradient(ellipse 160px 85px at 90% 90%, hsl(270 80% 60% / 0.1) 0%, transparent 70%);
-    animation: heat-distortion 6s ease-in-out infinite reverse;
-    z-index: 1;
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
-  
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Gradiente para textos */
   .text-gradient {
-    background: linear-gradient(135deg, hsl(270 80% 80%) 0%, hsl(45 100% 70%) 50%, hsl(25 90% 65%) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 10px hsl(270 80% 70% / 0.5));
-    animation: glow-pulse 3s ease-in-out infinite;
+    color: hsl(45, 100%, 50%);
+    text-shadow: 
+      0 0 5px hsl(280, 80%, 60%),
+      0 0 10px hsl(280, 80%, 60%),
+      0 0 20px hsl(280, 80%, 60%),
+      0 0 40px hsl(280, 80%, 60%);
+    filter: drop-shadow(0 0 8px hsl(280, 80%, 60%)) drop-shadow(0 0 16px hsl(280, 80%, 60%));
   }
-  
-  .floating-element {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .floating-delayed {
-    animation: float 6s ease-in-out infinite;
-    animation-delay: 2s;
-  }
-  
-  .photo-container {
-    @apply relative rounded-full border-4 border-white/30 backdrop-blur-sm;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: var(--shadow-glow) hsl(var(--primary) / 0.3);
-    transition: var(--transition-smooth);
-  }
-  
-  .photo-container:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-glow) hsl(var(--primary) / 0.5);
-  }
-  
-  .social-btn {
-    @apply relative rounded-2xl p-4 transition-all duration-300 transform hover:scale-110 active:scale-95;
-    @apply backdrop-blur-sm border border-white/20;
-    box-shadow: var(--shadow-elegant) rgba(0, 0, 0, 0.1);
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .social-btn:hover {
-    box-shadow: var(--shadow-glow) currentColor;
-  }
-  
-  .whatsapp-btn {
-    background: linear-gradient(135deg, hsl(var(--whatsapp)) 0%, hsl(var(--whatsapp)) 100%);
-    color: white;
-  }
-  
-  .instagram-btn {
-    background: linear-gradient(135deg, hsl(var(--instagram-start)) 0%, hsl(var(--instagram-end)) 100%);
-    color: white;
-  }
-  
-  .linkedin-btn {
-    background: linear-gradient(135deg, hsl(var(--linkedin)) 0%, hsl(var(--linkedin)) 100%);
-    color: white;
-  }
-  
-  .telegram-btn {
-    background: linear-gradient(135deg, hsl(var(--telegram)) 0%, hsl(var(--telegram)) 100%);
-    color: white;
-  }
-  
-  .youtube-btn {
-    background: linear-gradient(135deg, hsl(var(--youtube)) 0%, hsl(var(--youtube)) 100%);
-    color: white;
-  }
-  
-  .tiktok-btn {
-    background: linear-gradient(135deg, hsl(var(--tiktok)) 0%, hsl(320 100% 60%) 100%);
-    color: white;
-  }
-}
 
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: var(--shadow-glow) hsl(var(--primary) / 0.3);
-  }
-  50% {
-    box-shadow: var(--shadow-glow) hsl(var(--primary) / 0.6);
-}
-
-@keyframes wave {
-  0%, 100% {
-    transform: translateX(-50%) translateY(-50%) rotate(0deg);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-50%) rotate(180deg);
-  }
-}
-
-@keyframes glow-pulse {
-  0%, 100% {
-    filter: drop-shadow(0 0 10px hsl(270 80% 70% / 0.5));
-  }
-  50% {
-    filter: drop-shadow(0 0 20px hsl(270 80% 70% / 0.8)) drop-shadow(0 0 30px hsl(45 100% 70% / 0.4));
-  }
-}
-
-@keyframes heat-wave {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-    filter: blur(1px) hue-rotate(0deg);
-  }
-  25% {
-    transform: scale(1.02) rotate(1deg);
-    filter: blur(1.5px) hue-rotate(5deg);
-  }
-  50% {
-    transform: scale(0.98) rotate(-0.5deg);
-    filter: blur(2px) hue-rotate(10deg);
-  }
-  75% {
-    transform: scale(1.01) rotate(0.8deg);
-    filter: blur(1.2px) hue-rotate(-5deg);
-  }
-}
-
-@keyframes heat-distortion {
-  0%, 100% {
-    transform: scale(1) skew(0deg);
-    opacity: 0.6;
-  }
-  33% {
-    transform: scale(1.05) skew(0.5deg);
-    opacity: 0.8;
-  }
-  66% {
-    transform: scale(0.95) skew(-0.3deg);
-    opacity: 0.4;
+  .text-gradient-subtitle {
+    color: hsl(45, 95%, 55%);
+    text-shadow: 
+      0 0 5px hsl(280, 70%, 65%),
+      0 0 10px hsl(280, 70%, 65%),
+      0 0 20px hsl(280, 70%, 65%),
+      0 0 30px hsl(280, 70%, 65%);
+    filter: drop-shadow(0 0 6px hsl(280, 70%, 65%)) drop-shadow(0 0 12px hsl(280, 70%, 65%));
   }
 }

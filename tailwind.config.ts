@@ -57,24 +57,26 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        whatsapp: "hsl(var(--whatsapp))",
-        instagram: {
-          start: "hsl(var(--instagram-start))",
-          end: "hsl(var(--instagram-end))",
+        // Social Links Profile Colors
+        profile: {
+          background: "hsl(var(--profile-background))",
+          text: "hsl(var(--profile-text))",
+          secondary: "hsl(var(--profile-secondary))",
         },
-        linkedin: "hsl(var(--linkedin))",
-        telegram: "hsl(var(--telegram))",
-        youtube: "hsl(var(--youtube))",
-        tiktok: "hsl(var(--tiktok))",
+        name: "hsl(var(--name-text))",
+        subtitle: "hsl(var(--subtitle-text))",
+        social: {
+          whatsapp: "hsl(var(--whatsapp))",
+          linkedin: "hsl(var(--linkedin))",
+          telegram: "hsl(var(--telegram))",
+          youtube: "hsl(var(--youtube))",
+        },
       },
       backgroundImage: {
-        "gradient-sun-moon": "var(--gradient-sun-moon)",
-        "gradient-sun-moon-reverse": "var(--gradient-sun-moon-reverse)",
-      },
-      animation: {
-        "gradient-shift": "gradient-shift 8s ease-in-out infinite",
-        "float": "float 6s ease-in-out infinite",
-        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        "gradient-main": "var(--gradient-main)",
+        "gradient-profile-ring": "var(--gradient-profile-ring)",
+        "gradient-instagram": "linear-gradient(135deg, hsl(var(--instagram-start)), hsl(var(--instagram-end)))",
+        "gradient-tiktok": "linear-gradient(135deg, hsl(var(--tiktok-start)), hsl(var(--tiktok-end)))",
       },
       borderRadius: {
         lg: "var(--radius)",
